@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chattanooga Events Calendar</title>
+
+  <!-- FullCalendar CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.css" rel="stylesheet" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <header>
+    <div class="header-inner">
+      <div class="logo">
+        <span class="logo-icon">📅</span>
+        <span class="logo-text">Chattanooga Events</span>
+      </div>
+      <div class="header-meta">
+        <span id="last-updated"></span>
+      </div>
+    </div>
+  </header>
+
+  <nav class="tab-nav">
+    <div class="tab-nav-inner">
+      <button class="tab-btn active" data-tab="calendar">Calendar</button>
+      <button class="tab-btn" data-tab="list">Events List</button>
+    </div>
+  </nav>
+
+  <!-- Calendar Tab -->
+  <div id="tab-calendar" class="tab-content active">
+    <div class="container">
+      <div id="calendar"></div>
+    </div>
+  </div>
+
+  <!-- Events List Tab -->
+  <div id="tab-list" class="tab-content">
+    <div class="container">
+      <div class="list-controls">
+        <input type="text" id="search-input" placeholder="Search events..." />
+        <select id="category-filter">
+          <option value="">All Categories</option>
+          <option value="Music">Music</option>
+          <option value="Arts">Arts</option>
+          <option value="Sports">Sports</option>
+          <option value="Food">Food</option>
+          <option value="Family">Family</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+      <div id="events-list"></div>
+    </div>
+  </div>
+
+  <!-- Event Detail Modal -->
+  <div id="event-modal" class="modal-overlay" style="display:none;">
+    <div class="modal-box">
+      <button class="modal-close" id="modal-close">&times;</button>
+      <div id="modal-content"></div>
+    </div>
+  </div>
+
+  <!-- FullCalendar JS -->
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
