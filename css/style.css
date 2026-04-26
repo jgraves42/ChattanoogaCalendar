@@ -391,7 +391,7 @@ header {
 .fc-list-table { background: var(--surface) !important; }
 .fc-list-event td { border-color: var(--border) !important; }
 .fc-list-event:hover td { background: var(--surface2) !important; }
-.fc-list-event-dot { border-color: currentColor !important; }
+.fc-list-event-dot { border-width: 5px !important; }
 .fc-list-event-title a { color: var(--text) !important; text-decoration: none; }
 .fc-list-day th { background: var(--surface2) !important; border-color: var(--border) !important; }
 
