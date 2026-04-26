@@ -5,10 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Chattanooga Events Calendar</title>
 
-  <!-- FullCalendar CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.css" rel="stylesheet" />
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="css/style.css" />
 </head>
@@ -36,6 +34,15 @@
   <!-- Calendar Tab -->
   <div id="tab-calendar" class="tab-content active">
     <div class="container">
+      <div class="cal-filters">
+        <button class="cal-filter-btn active" data-cat="">All</button>
+        <button class="cal-filter-btn" data-cat="Music">Music</button>
+        <button class="cal-filter-btn" data-cat="Arts">Arts</button>
+        <button class="cal-filter-btn" data-cat="Sports">Sports</button>
+        <button class="cal-filter-btn" data-cat="Food">Food</button>
+        <button class="cal-filter-btn" data-cat="Family">Family</button>
+        <button class="cal-filter-btn" data-cat="Other">Other</button>
+      </div>
       <div id="calendar"></div>
     </div>
   </div>
@@ -67,8 +74,8 @@
     </div>
   </div>
 
-  <!-- FullCalendar JS -->
-  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js"></script>
+  <script src="js/fullcalendar.min.js"></script>
+  <script src="data/events.js"></script>
   <script src="js/app.js"></script>
 </body>
 </html>

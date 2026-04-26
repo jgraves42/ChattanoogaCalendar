@@ -35,6 +35,6 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "chore: weekly event data update [skip ci]"
-          file_pattern: data/events.json
+          file_pattern: data/events.js
           commit_user_name: "github-actions[bot]"
           commit_user_email: "github-actions[bot]@users.noreply.github.com"

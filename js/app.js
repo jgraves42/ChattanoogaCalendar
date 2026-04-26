@@ -7,12 +7,12 @@
 
   // ── Category colours ────────────────────────────────────────────────────────
   const CATEGORY_COLORS = {
-    Music:  '#7c3aed',
-    Arts:   '#db2777',
-    Sports: '#059669',
-    Food:   '#d97706',
-    Family: '#2563eb',
-    Other:  '#475569',
+    Music:  '#b44fff',
+    Arts:   '#ff2d78',
+    Sports: '#00ff9f',
+    Food:   '#ffe600',
+    Family: '#00d4ff',
+    Other:  '#7070a0',
   };
 
   function categoryColor(cat) {
@@ -138,57 +138,81 @@
   // ── FullCalendar ─────────────────────────────────────────────────────────────
   let calendar;
 
-  function initCalendar(events) {
-    const calEl = document.getElementById('calendar');
-    calendar = new FullCalendar.Calendar(calEl, {
-      initialView: 'dayGridMonth',
-      headerToolbar: {
-        left:   'prev,next today',
-        center: 'title',
-        right:  'dayGridMonth,listMonth'
-      },
-      height: 'auto',
-      events: events.map(ev => ({
-        id:    ev.id,
-        title: ev.title,
-        start: ev.start,
-        end:   ev.end || undefined,
-        color: categoryColor(ev.category),
-        extendedProps: ev,
-      })),
-      eventClick: function (info) {
-        openModal(info.event.extendedProps);
-      },
-      eventMouseEnter: function (info) {
-        info.el.title = info.event.title;
-      },
-    });
-    calendar.render();
+  function toFcEvent(ev) {
+    return {
+      id:            ev.id,
+      title:         ev.title,
+      start:         ev.start,
+      end:           ev.end || undefined,
+      color:         categoryColor(ev.category),
+      extendedProps: ev,
+    };
   }
 
+  function initCalendar(events) {
+    const calEl = document.getElementById('calendar');
+    try {
+      calendar = new FullCalendar.Calendar(calEl, {
+        initialView: 'dayGridMonth',
+        headerToolbar: {
+          left:   'prev,next today',
+          center: 'title',
+          right:  'dayGridMonth,listMonth'
+        },
+        height: 'auto',
+        events: events.map(toFcEvent),
+        eventClick: function (info) {
+          openModal(info.event.extendedProps);
+        },
+        eventMouseEnter: function (info) {
+          info.el.title = info.event.title;
+        },
+      });
+      calendar.render();
+    } catch (err) {
+      calEl.innerHTML = `<p style="padding:20px;color:#e53e3e;font-weight:600;">
+        Calendar failed to load: ${err.message}<br>
+        <small style="font-weight:400;color:#718096;">Open browser dev tools (F12) for details.</small>
+      </p>`;
+    }
+  }
+
+  // ── Calendar category filter ──────────────────────────────────────────────────
+  function applyCalendarFilter(category) {
+    // Update active pill
+    document.querySelectorAll('.cal-filter-btn').forEach(btn =>
+      btn.classList.toggle('active', btn.dataset.cat === category)
+    );
+    // Swap calendar events
+    const filtered = category ? allEvents.filter(ev => ev.category === category) : allEvents;
+    calendar.removeAllEvents();
+    filtered.forEach(ev => calendar.addEvent(toFcEvent(ev)));
+  }
+
+  document.querySelectorAll('.cal-filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => applyCalendarFilter(btn.dataset.cat));
+  });
+
   // ── Load data ────────────────────────────────────────────────────────────────
-  fetch('data/events.json')
-    .then(r => {
-      if (!r.ok) throw new Error('Failed to load events.json');
-      return r.json();
-    })
-    .then(data => {
-      allEvents = Array.isArray(data.events) ? data.events : (Array.isArray(data) ? data : []);
+  const data = window.CHATTANOOGA_EVENTS;
 
-      // Show last-updated timestamp
-      if (data.last_updated) {
-        const lu = new Date(data.last_updated);
-        document.getElementById('last-updated').textContent =
-          'Updated ' + lu.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-      }
+  if (data) {
+    allEvents = Array.isArray(data.events) ? data.events : (Array.isArray(data) ? data : []);
 
-      initCalendar(allEvents);
-      filterAndRender();
-    })
-    .catch(err => {
-      console.warn('Could not load events:', err);
-      // Show empty state gracefully
-      eventsListEl.innerHTML = '<p class="no-results">Events are loading — check back soon.</p>';
-    });
+    const statusEl = document.getElementById('last-updated');
+    let statusText = `${allEvents.length} event${allEvents.length !== 1 ? 's' : ''}`;
+    if (data.last_updated) {
+      const lu = new Date(data.last_updated);
+      statusText = 'Updated ' + lu.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) + ' · ' + statusText;
+    }
+    statusEl.textContent = statusText;
+
+    initCalendar(allEvents);
+    filterAndRender();
+  } else {
+    document.getElementById('last-updated').textContent = 'No event data — run scraper first';
+    eventsListEl.innerHTML = '<p class="no-results">No event data found — run <code>python scripts/scraper.py</code> to generate it.</p>';
+    initCalendar([]);
+  }
 
 })();
