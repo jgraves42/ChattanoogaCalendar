@@ -137,6 +137,9 @@
 
   // ── FullCalendar ─────────────────────────────────────────────────────────────
   let calendar;
+  let lastMobile = null;
+
+  function isMobile() { return window.innerWidth < 768; }
 
   function toFcEvent(ev) {
     return {
@@ -151,13 +154,14 @@
 
   function initCalendar(events) {
     const calEl = document.getElementById('calendar');
+    lastMobile = isMobile();
     try {
       calendar = new FullCalendar.Calendar(calEl, {
-        initialView: 'dayGridMonth',
+        initialView: lastMobile ? 'listMonth' : 'dayGridMonth',
         headerToolbar: {
           left:   'prev,next today',
           center: 'title',
-          right:  'dayGridMonth,listMonth'
+          right:  lastMobile ? '' : 'dayGridMonth,listMonth',
         },
         height: 'auto',
         events: events.map(toFcEvent),
@@ -177,13 +181,30 @@
     }
   }
 
+  // Switch view when crossing the mobile breakpoint (e.g. rotation)
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      if (!calendar) return;
+      const mobile = isMobile();
+      if (mobile === lastMobile) return;
+      lastMobile = mobile;
+      calendar.changeView(mobile ? 'listMonth' : 'dayGridMonth');
+      // Update the toolbar buttons to match the new view
+      calendar.setOption('headerToolbar', {
+        left:   'prev,next today',
+        center: 'title',
+        right:  mobile ? '' : 'dayGridMonth,listMonth',
+      });
+    }, 150);
+  });
+
   // ── Calendar category filter ──────────────────────────────────────────────────
   function applyCalendarFilter(category) {
-    // Update active pill
     document.querySelectorAll('.cal-filter-btn').forEach(btn =>
       btn.classList.toggle('active', btn.dataset.cat === category)
     );
-    // Swap calendar events
     const filtered = category ? allEvents.filter(ev => ev.category === category) : allEvents;
     calendar.removeAllEvents();
     filtered.forEach(ev => calendar.addEvent(toFcEvent(ev)));

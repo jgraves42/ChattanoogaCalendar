@@ -383,10 +383,44 @@ header {
 ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--purple); }
 
-/* ===== Responsive ===== */
-@media (max-width: 600px) {
-  .logo-text { font-size: .9rem; }
-  .tab-btn { padding: 12px 14px; font-size: .75rem; }
-  #calendar { padding: 10px; }
-  .cal-filter-btn { font-size: .7rem; padding: 4px 11px; }
+/* ===== FullCalendar list view dark overrides ===== */
+.fc-list-empty {
+  background: var(--surface) !important;
+  color: var(--muted) !important;
+}
+.fc-list-table { background: var(--surface) !important; }
+.fc-list-event td { border-color: var(--border) !important; }
+.fc-list-event:hover td { background: var(--surface2) !important; }
+.fc-list-event-dot { border-color: currentColor !important; }
+.fc-list-event-title a { color: var(--text) !important; text-decoration: none; }
+.fc-list-day th { background: var(--surface2) !important; border-color: var(--border) !important; }
+
+/* ===== Touch feedback ===== */
+.cal-filter-btn:active { opacity: .75; transform: scale(.96); }
+.tab-btn:active { color: var(--cyan); }
+.event-card:active { border-color: var(--pink); box-shadow: var(--glow-pink); transform: translateY(-1px); }
+.modal-link:active { background: var(--pink); color: #fff; }
+
+/* ===== Tablet (≤768px) ===== */
+@media (max-width: 768px) {
+  .header-inner { height: 56px; }
+  .tab-btn { padding: 12px 18px; font-size: .82rem; }
+  .list-controls { flex-direction: column; }
+  .list-controls input,
+  .list-controls select { width: 100%; min-width: unset; }
+}
+
+/* ===== Phone (≤480px) ===== */
+@media (max-width: 480px) {
+  .logo-text { font-size: .85rem; }
+  .tab-btn { padding: 11px 14px; font-size: .75rem; min-height: 44px; }
+  #calendar { padding: 8px; }
+  .cal-filters { gap: 6px; }
+  .cal-filter-btn { font-size: .72rem; padding: 0 12px; min-height: 40px; }
+  .modal-box { padding: 18px; }
+  .modal-close {
+    top: 10px; right: 10px;
+    width: 44px; height: 44px;
+    display: flex; align-items: center; justify-content: center;
+  }
 }
