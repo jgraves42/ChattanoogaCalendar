@@ -454,87 +454,12 @@ def scrape_eventbrite():
     return events
 
 
-def scrape_riverfront_nights():
-    """
-    Riverfront Nights is a Squarespace site. Squarespace exposes a built-in
-    JSON API at ?format=json on any collection page — no JS rendering needed.
-    """
-    SOURCE = "riverfrontnights.com"
-    BASE   = "https://www.riverfrontnights.com"
-    events = []
-
-    for page in range(1, 5):
-        url = f"{BASE}/events?format=json" if page == 1 else f"{BASE}/events?format=json&page={page}"
-        log.info(f"  [{SOURCE}] page {page}...")
-        r = fetch(url)
-        if not r:
-            break
-
-        try:
-            data = r.json()
-        except Exception:
-            log.warning(f"  [{SOURCE}] failed to parse JSON on page {page}")
-            break
-
-        items = data.get("items") or data.get("events") or []
-        if not items:
-            break
-
-        for item in items:
-            title = item.get("title") or item.get("fullTitle")
-            if not title:
-                continue
-
-            # Squarespace stores dates as Unix ms timestamps
-            start_ms = item.get("startDate") or item.get("publishOn")
-            end_ms   = item.get("endDate")
-            start    = datetime.fromtimestamp(start_ms / 1000).isoformat() if start_ms else None
-            end      = datetime.fromtimestamp(end_ms   / 1000).isoformat() if end_ms   else None
-
-            if not start:
-                continue
-
-            # Drop past events
-            try:
-                if datetime.fromisoformat(start) < datetime.now():
-                    continue
-            except Exception:
-                pass
-
-            loc      = item.get("location") or {}
-            venue    = loc.get("addressTitle") or loc.get("address") or "Tennessee Aquarium Plaza"
-
-            desc_raw = item.get("excerpt") or item.get("body") or ""
-            desc     = re.sub(r"<[^>]+>", " ", desc_raw).strip()
-            desc     = re.sub(r"\s+", " ", desc)[:600] or None
-
-            full_url = BASE + (item.get("fullUrl") or item.get("urlId") or "")
-
-            ev = normalize({
-                "name":        title,
-                "startDate":   start,
-                "endDate":     end,
-                "description": desc,
-                "location":    {"name": venue},
-            }, SOURCE, full_url)
-
-            if ev:
-                events.append(ev)
-
-        if len(items) < 20:
-            break
-
-    log.info(f"  [{SOURCE}] done — {len(events)} events")
-    return events
-
-
 # ── Orchestrator ──────────────────────────────────────────────────────────────
 SOURCES = [
     scrape_visit_chattanooga,
     scrape_chattanooga_pulse,
     scrape_nooga_today,
     scrape_nooga_nightlife,
-    scrape_riverfront_nights,
     scrape_eventbrite,
 ]
 
