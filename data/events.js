@@ -2,39 +2,6 @@ window.CHATTANOOGA_EVENTS = {
   "last_updated": "2026-04-25T23:58:27.562327+00:00",
   "events": [
     {
-      "id": "b372bcd23a5f",
-      "title": "Random Acts of Kindness Spree in Chattanooga",
-      "start": "2025-10-02T11:00:00-04:00",
-      "end": "2026-05-15T16:00:00-04:00",
-      "description": "Give back, spread kindness, and discover hidden gems of Chattanooga with a live interactive host.",
-      "url": "https://www.eventbrite.com/e/random-acts-of-kindness-spree-in-chattanooga-tickets-1761500378049",
-      "venue": "Coolidge Park Carousel",
-      "category": "Family",
-      "source": "eventbrite.com"
-    },
-    {
-      "id": "950893c8739e",
-      "title": "Bend & Booch",
-      "start": "2026-03-29T10:00:00-04:00",
-      "end": "2026-10-04T11:00:00-04:00",
-      "description": "Join us for yoga at the kombucha lounge! Hosted by Tracy Madigan with the Sattva Project. This event is Pay What You Can.",
-      "url": "https://www.eventbrite.com/e/bend-booch-tickets-1985817768402",
-      "venue": "2310 Vance Ave suite 206",
-      "category": "Food",
-      "source": "eventbrite.com"
-    },
-    {
-      "id": "c998a55c822a",
-      "title": "4 Days PMP Certification Bootcamp (35 Contact Hours) in Chattanooga, TN",
-      "start": "2026-04-25T09:00:00-04:00",
-      "end": "2027-04-03T17:00:00-04:00",
-      "description": "Pass PMP exam on your first attempt! Enroll in our 4-day PMI® Authorized PMP Bootcamp, featuring 35 contact hours and expert-led in-person",
-      "url": "https://www.eventbrite.com/e/4-days-pmp-certification-bootcamp-35-contact-hours-in-chattanooga-tn-tickets-1988199012768",
-      "venue": "Regus - Chattanooga - Tallan Financial Center",
-      "category": "Other",
-      "source": "eventbrite.com"
-    },
-    {
       "id": "98f2a3ecfc84",
       "title": "Spring 2026 Campfire Concert Series - Randy Steele and High Cold Wind",
       "start": "2026-04-25T18:30:00-04:00",
