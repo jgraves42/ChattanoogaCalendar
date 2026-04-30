@@ -456,82 +456,110 @@ def scrape_eventbrite():
 
 def scrape_chatt_zoo():
     """
-    Scrapes special events from chattzoo.org — skips daily schedule items
-    (feeding times, keeper talks, etc.) which repeat every day.
-    Tries JSON-LD first, then falls back to The Events Calendar plugin HTML
-    (common WordPress events plugin used by many attraction sites).
+    chattzoo.org uses a custom page builder layout — not The Events Calendar plugin.
+    The listing page (/events/) shows event titles in <h3> tags with "Learn More"
+    links pointing to /events/<slug>/. We collect those links, then visit each
+    detail page where JSON-LD and structured content are more likely to exist.
     """
     SOURCE = "chattzoo.org"
     BASE   = "https://www.chattzoo.org"
     events = []
 
-    # Keywords that indicate a repeating daily schedule item, not a special event
     DAILY_SKIP = {
         "feeding", "keeper talk", "keeper chat", "daily", "every day",
-        "animal encounter", "behind the scenes tour", "scheduled",
-        "am feeding", "pm feeding", "morning feeding", "afternoon feeding",
+        "animal encounter", "am feeding", "pm feeding",
+        "morning feeding", "afternoon feeding",
     }
 
     def is_daily_schedule(title, desc=""):
         text = (title + " " + (desc or "")).lower()
         return any(k in text for k in DAILY_SKIP)
 
-    for page in range(1, 4):
-        url = f"{BASE}/events/" if page == 1 else f"{BASE}/events/page/{page}/"
-        log.info(f"  [{SOURCE}] page {page}...")
-        r = fetch(url)
-        if not r:
-            break
+    # Step 1: collect event detail page links from the listing page
+    log.info(f"  [{SOURCE}] fetching event listing...")
+    r = fetch(f"{BASE}/events/")
+    if not r:
+        return events
 
-        # Try JSON-LD first
-        for item in jsonld(url, html=r.text):
+    s = BeautifulSoup(r.text, "lxml")
+
+    # Collect all links that match /events/<slug> (not just /events/ itself)
+    links = []
+    for a in s.select("a[href*='/events/']"):
+        href = a.get("href", "")
+        # Must be a specific event slug, not the listing page or pagination
+        if (href and
+                "/events/" in href and
+                not href.rstrip("/").endswith("/events") and
+                "page" not in href and
+                href not in links):
+            full = href if href.startswith("http") else BASE + href
+            links.append(full)
+
+    log.info(f"  [{SOURCE}] found {len(links)} event links")
+
+    # Step 2: visit each detail page
+    for i, link in enumerate(links, 1):
+        log.info(f"  [{SOURCE}] event {i}/{len(links)}: {link.split('/')[-2]}")
+
+        # Try JSON-LD on the detail page first
+        detail_ld = jsonld(link)
+        scraped = False
+        for item in detail_ld:
             if item.get("@type") in ("Event", "SocialEvent", "FoodEvent"):
                 title = str(item.get("name") or "").strip()
-                if not title or is_daily_schedule(title, item.get("description", "")):
-                    continue
-                ev = normalize(item, SOURCE)
-                if ev:
-                    events.append(ev)
+                if title and not is_daily_schedule(title, item.get("description", "")):
+                    ev = normalize(item, SOURCE, link)
+                    if ev:
+                        events.append(ev)
+                        scraped = True
+                        break
 
-        # HTML fallback — The Events Calendar plugin structure
-        s = BeautifulSoup(r.text, "lxml")
-        cards = (s.select(".tribe-events-calendar article") or
-                 s.select(".tribe-event") or
-                 s.select(".tribe-events-list .tribe-events-event-meta") or
-                 s.select("article.type-tribe_events") or
-                 s.select(".event-item"))
+        if scraped:
+            continue
 
-        for card in cards:
-            title_el = card.select_one(
-                ".tribe-event-url, .tribe-events-list-event-title a, "
-                "h2 a, h3 a, .entry-title a, [class*='event-title'] a"
-            )
-            title = title_el.get_text(strip=True) if title_el else None
-            if not title or is_daily_schedule(title):
-                continue
+        # HTML fallback on the detail page
+        detail_r = fetch(link)
+        if not detail_r:
+            continue
+        ds = BeautifulSoup(detail_r.text, "lxml")
 
-            date_el = card.select_one(
-                ".tribe-events-start-datetime, time, "
-                "[class*='event-date'], [class*='start-date']"
-            )
+        # Title: h1 is most reliable on a detail page
+        title_el = ds.select_one("h1, h2, .entry-title")
+        title = title_el.get_text(strip=True) if title_el else None
+        if not title or is_daily_schedule(title):
+            continue
+
+        # chattzoo.org puts date+time in <h5> as "May 16 | 6:00 PM - 9:00 PM"
+        # Fall back to <time> or class-based selectors for other pages
+        date_str = None
+        h5_el = ds.select_one("h5")
+        if h5_el:
+            h5_text = h5_el.get_text(strip=True)
+            # Format: "May 16 | 6:00 PM - 9:00 PM"
+            if "|" in h5_text:
+                parts = h5_text.split("|")
+                date_part = parts[0].strip()
+                time_part = parts[1].strip().split("-")[0].strip() if len(parts) > 1 else ""
+                current_year = datetime.now().year
+                date_str = f"{date_part} {current_year} {time_part}".strip()
+            else:
+                date_str = h5_text
+
+        if not date_str:
+            date_el = ds.select_one("time, [class*='date'], [class*='Date'], [class*='when']")
             date_str = (date_el.get("datetime") or date_el.get_text(strip=True)) if date_el else None
 
-            desc_el = card.select_one(".tribe-events-list-event-description p, p, .entry-summary")
-            desc = desc_el.get_text(" ", strip=True)[:500] if desc_el else None
+        # Description: first substantial paragraph
+        desc_el = ds.select_one(".entry-content p, article p, .post-content p, main p")
+        desc = desc_el.get_text(" ", strip=True)[:500] if desc_el else None
 
-            link = title_el.get("href", BASE) if title_el else BASE
-            if link and not link.startswith("http"):
-                link = BASE + link
-
-            ev = normalize({
-                "name": title, "startDate": date_str, "description": desc,
-                "location": {"name": "Chattanooga Zoo"},
-            }, SOURCE, link)
-            if ev:
-                events.append(ev)
-
-        if not cards and not any(item.get("@type") in ("Event",) for item in jsonld(url, html=r.text)):
-            break
+        ev = normalize({
+            "name": title, "startDate": date_str, "description": desc,
+            "location": {"name": "Chattanooga Zoo"},
+        }, SOURCE, link)
+        if ev:
+            events.append(ev)
 
     log.info(f"  [{SOURCE}] done — {len(events)} events")
     return events
@@ -539,73 +567,64 @@ def scrape_chatt_zoo():
 
 def scrape_tn_aquarium():
     """
-    Scrapes events from tnaqua.org/calendar/ — likely The Events Calendar
-    WordPress plugin. Tries JSON-LD first, then plugin HTML structure.
+    tnaqua.org uses a custom WordPress theme — no Events Calendar plugin.
+    Events are structured as:
+        <a href="[ticket or detail URL]">
+          <figure class="wp-block-image">...</figure>
+          <h4>Event Title</h4>
+          <h6>May 5</h6>   ← date without year
+        </a>
+    We scrape /events-programs/ which has more listings than /calendar/.
     """
     SOURCE = "tnaqua.org"
     BASE   = "https://tnaqua.org"
     events = []
 
-    for page in range(1, 4):
-        url = f"{BASE}/calendar/" if page == 1 else f"{BASE}/calendar/page/{page}/"
-        log.info(f"  [{SOURCE}] page {page}...")
+    for url in [f"{BASE}/events-programs/", f"{BASE}/calendar/"]:
+        log.info(f"  [{SOURCE}] fetching {url}...")
         r = fetch(url)
         if not r:
-            break
+            continue
 
-        # Try JSON-LD
-        found_jsonld = False
-        for item in jsonld(url, html=r.text):
-            if item.get("@type") in ("Event", "SocialEvent", "EducationEvent"):
-                ev = normalize(item, SOURCE)
-                if ev:
-                    events.append(ev)
-                    found_jsonld = True
-
-        # HTML fallback — The Events Calendar plugin
         s = BeautifulSoup(r.text, "lxml")
-        cards = (s.select("article.type-tribe_events") or
-                 s.select(".tribe-event") or
-                 s.select(".tribe-events-list article") or
-                 s.select(".event-listing") or
-                 s.select("[class*='event-card']"))
 
-        for card in cards:
-            title_el = card.select_one(
-                ".tribe-events-list-event-title a, h2 a, h3 a, "
-                ".entry-title a, [class*='event-title'] a"
-            )
-            title = title_el.get_text(strip=True) if title_el else None
-            if not title:
+        # Each event is an <a> tag containing an <h4> (title) and <h6> (date)
+        for a in s.select("a"):
+            title_el = a.select_one("h4, h3, h2")
+            date_el  = a.select_one("h6, h5")
+            if not title_el or not date_el:
                 continue
 
-            date_el = card.select_one(
-                ".tribe-events-start-datetime, .tribe-event-date-start, "
-                "time, [class*='event-date'], abbr[title]"
-            )
-            date_str = (date_el.get("datetime") or date_el.get("title") or
-                        date_el.get_text(strip=True)) if date_el else None
+            title    = title_el.get_text(strip=True)
+            date_raw = date_el.get_text(strip=True)
+            link     = a.get("href", BASE)
 
-            end_el = card.select_one(".tribe-events-end-datetime, .tribe-event-date-end")
-            end_str = (end_el.get("datetime") or end_el.get_text(strip=True)) if end_el else None
+            if not title or not date_raw:
+                continue
 
-            desc_el = card.select_one(".tribe-events-list-event-description p, p, .entry-summary")
-            desc = desc_el.get_text(" ", strip=True)[:500] if desc_el else None
+            # Date comes without a year ("May 5") — append current year
+            current_year = datetime.now().year
+            date_str = f"{date_raw} {current_year}"
 
-            link = title_el.get("href", BASE) if title_el else BASE
+            # If parsed date is in the past, try next year
+            try:
+                parsed = dateparser.parse(date_str, fuzzy=True)
+                if parsed and parsed < datetime.now():
+                    date_str = f"{date_raw} {current_year + 1}"
+            except Exception:
+                pass
+
+            # Use the tnaqua detail page as the URL when available,
+            # falling back to the ticket URL
             if link and not link.startswith("http"):
                 link = BASE + link
 
             ev = normalize({
-                "name": title, "startDate": date_str, "endDate": end_str,
-                "description": desc,
+                "name": title, "startDate": date_str,
                 "location": {"name": "Tennessee Aquarium"},
             }, SOURCE, link)
             if ev:
                 events.append(ev)
-
-        if not cards and not found_jsonld:
-            break
 
     log.info(f"  [{SOURCE}] done — {len(events)} events")
     return events
@@ -613,73 +632,144 @@ def scrape_tn_aquarium():
 
 def scrape_chatt_ren_faire():
     """
-    Scrapes event dates from chattrenfaire.com.
-    Ren faire sites are typically simple — event dates listed on one or two pages
-    rather than a full calendar system. Tries JSON-LD, then common page locations.
+    chattrenfaire.com is a simple WordPress homepage for one annual event —
+    no /events/ path exists. The main faire date and sub-events (King & Queen Feast)
+    are listed directly on the homepage and inner pages.
+    We try JSON-LD first, then scan page text for date patterns.
     """
     SOURCE = "chattrenfaire.com"
     BASE   = "https://chattrenfaire.com"
     events = []
 
-    pages_to_try = ["/", "/events", "/event", "/schedule", "/dates", "/calendar"]
+    # Pages known to contain event info
+    pages = [
+        (BASE + "/",                "Chattanooga Renaissance Faire", "Coolidge Park, 150 River St, Chattanooga, TN"),
+        (BASE + "/king-queen-feast/", "King & Queen Feast",          "Coolidge Park, Chattanooga, TN"),
+    ]
 
-    for path in pages_to_try:
-        url = BASE + path
-        log.info(f"  [{SOURCE}] trying {path}...")
+    # Regex to find date strings like "Saturday, May 30, 2026" or "May 30, 2026"
+    DATE_RE = re.compile(
+        r"(?:Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday),?\s*"
+        r"(?:January|February|March|April|May|June|July|August|September|October|November|December)"
+        r"\s+\d{1,2},?\s+\d{4}",
+        re.IGNORECASE,
+    )
+    TIME_RE = re.compile(r"\d{1,2}:\d{2}\s*(?:AM|PM)", re.IGNORECASE)
+
+    for url, fallback_title, fallback_venue in pages:
+        log.info(f"  [{SOURCE}] fetching {url}...")
         r = fetch(url)
-        if not r or r.status_code == 404:
+        if not r:
             continue
 
         # Try JSON-LD first
+        scraped = False
         for item in jsonld(url, html=r.text):
             if item.get("@type") in ("Event", "SocialEvent", "Festival"):
-                ev = normalize(item, SOURCE)
+                ev = normalize(item, SOURCE, url)
                 if ev:
                     events.append(ev)
+                    scraped = True
 
-        # HTML fallback — generic event/date patterns
+        if scraped:
+            continue
+
+        # Extract visible text and hunt for date patterns
         s = BeautifulSoup(r.text, "lxml")
+        full_text = s.get_text(" ")
 
-        # The Events Calendar plugin
-        cards = (s.select("article.type-tribe_events") or
-                 s.select(".tribe-event") or
-                 s.select(".tribe-events-list article"))
+        date_match = DATE_RE.search(full_text)
+        time_matches = TIME_RE.findall(full_text)
+        date_str = date_match.group(0) if date_match else None
 
-        # Generic fallback selectors
-        if not cards:
-            cards = (s.select(".event") or
-                     s.select("article") or
-                     s.select("[class*='event']"))
+        # Build a datetime string combining date + start time if found
+        if date_str and time_matches:
+            date_str = f"{date_str} {time_matches[0]}"
 
-        for card in cards:
-            title_el = card.select_one("h1, h2, h3, h4, .entry-title, [class*='title']")
-            title = title_el.get_text(strip=True) if title_el else None
-            if not title or len(title) < 4:
-                continue
+        # Description: first substantial paragraph
+        desc_el = s.select_one(".entry-content p, article p, main p, p")
+        desc = desc_el.get_text(" ", strip=True)[:500] if desc_el else None
 
-            date_el = card.select_one("time, [class*='date'], [class*='when'], abbr[title]")
-            date_str = (date_el.get("datetime") or date_el.get("title") or
-                        date_el.get_text(strip=True)) if date_el else None
+        # Page title as event title
+        title_el = s.select_one("h1, .entry-title")
+        title = title_el.get_text(strip=True) if title_el else fallback_title
 
-            desc_el = card.select_one("p, .description, .entry-content p")
-            desc = desc_el.get_text(" ", strip=True)[:500] if desc_el else None
-
-            link_el = card.select_one("a[href]")
-            link = link_el.get("href", BASE) if link_el else BASE
-            if link and not link.startswith("http"):
-                link = BASE + link
-
-            ev = normalize({
-                "name": title, "startDate": date_str, "description": desc,
-                "location": {"name": "Chattanooga Renaissance Faire"},
-            }, SOURCE, link)
-            if ev:
-                events.append(ev)
-
-        if events:
-            break  # Found events, no need to try more pages
+        ev = normalize({
+            "name": title or fallback_title,
+            "startDate": date_str,
+            "description": desc,
+            "location": {"name": fallback_venue},
+        }, SOURCE, url)
+        if ev:
+            events.append(ev)
 
     log.info(f"  [{SOURCE}] done — {len(events)} events")
+    return events
+
+
+def scrape_lookouts():
+    """
+    Chattanooga Lookouts (Double-A, team ID 467) home game schedule.
+    Uses the public MLB Stats API — milb.com blocks scrapers with 406.
+    Only home games are included since those are relevant to local attendees.
+    """
+    SOURCE  = "milb.com/chattanooga"
+    TEAM_ID = 467   # Chattanooga Lookouts
+    VENUE   = "AT&T Field, Chattanooga"
+    URL     = "https://milb.com/chattanooga"
+    events  = []
+
+    season = datetime.now().year
+    api_url = (
+        f"https://statsapi.mlb.com/api/v1/schedule"
+        f"?teamId={TEAM_ID}&sportId=12&season={season}"
+        f"&startDate={season}-01-01&endDate={season}-12-31"
+        f"&gameType=R&hydrate=team,venue,game(content(summary))"
+    )
+    log.info(f"  [{SOURCE}] fetching schedule via MLB Stats API...")
+    r = fetch(api_url)
+    if not r:
+        log.warning(f"  [{SOURCE}] API request failed")
+        return events
+
+    try:
+        data = r.json()
+    except Exception as e:
+        log.warning(f"  [{SOURCE}] JSON parse failed: {e}")
+        return events
+
+    for date_block in data.get("dates", []):
+        for game in date_block.get("games", []):
+            # Only include home games
+            home_team = game.get("teams", {}).get("home", {}).get("team", {})
+            if home_team.get("id") != TEAM_ID:
+                continue
+
+            away_team  = game.get("teams", {}).get("away", {}).get("team", {})
+            away_name  = away_team.get("name", "Opponent")
+            game_date  = game.get("gameDate")     # ISO 8601 with time UTC
+            game_id    = str(game.get("gamePk", ""))
+            status     = game.get("status", {}).get("abstractGameState", "")
+
+            if not game_date:
+                continue
+
+            title = f"Chattanooga Lookouts vs {away_name}"
+            desc  = f"Chattanooga Lookouts home game at AT&T Field. Status: {status}."
+
+            ev = normalize({
+                "name":        title,
+                "startDate":   game_date,
+                "description": desc,
+                "location":    {"name": VENUE},
+            }, SOURCE, URL)
+
+            if ev:
+                ev["id"] = f"lookouts-{game_id}"   # stable ID from game PK
+                ev["category"] = "Sports"
+                events.append(ev)
+
+    log.info(f"  [{SOURCE}] done — {len(events)} home games")
     return events
 
 
@@ -692,6 +782,7 @@ SOURCES = [
     scrape_chatt_zoo,
     scrape_tn_aquarium,
     scrape_chatt_ren_faire,
+    scrape_lookouts,
     scrape_eventbrite,
 ]
 
