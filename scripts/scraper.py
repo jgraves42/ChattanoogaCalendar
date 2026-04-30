@@ -611,6 +611,78 @@ def scrape_tn_aquarium():
     return events
 
 
+def scrape_chatt_ren_faire():
+    """
+    Scrapes event dates from chattrenfaire.com.
+    Ren faire sites are typically simple — event dates listed on one or two pages
+    rather than a full calendar system. Tries JSON-LD, then common page locations.
+    """
+    SOURCE = "chattrenfaire.com"
+    BASE   = "https://chattrenfaire.com"
+    events = []
+
+    pages_to_try = ["/", "/events", "/event", "/schedule", "/dates", "/calendar"]
+
+    for path in pages_to_try:
+        url = BASE + path
+        log.info(f"  [{SOURCE}] trying {path}...")
+        r = fetch(url)
+        if not r or r.status_code == 404:
+            continue
+
+        # Try JSON-LD first
+        for item in jsonld(url, html=r.text):
+            if item.get("@type") in ("Event", "SocialEvent", "Festival"):
+                ev = normalize(item, SOURCE)
+                if ev:
+                    events.append(ev)
+
+        # HTML fallback — generic event/date patterns
+        s = BeautifulSoup(r.text, "lxml")
+
+        # The Events Calendar plugin
+        cards = (s.select("article.type-tribe_events") or
+                 s.select(".tribe-event") or
+                 s.select(".tribe-events-list article"))
+
+        # Generic fallback selectors
+        if not cards:
+            cards = (s.select(".event") or
+                     s.select("article") or
+                     s.select("[class*='event']"))
+
+        for card in cards:
+            title_el = card.select_one("h1, h2, h3, h4, .entry-title, [class*='title']")
+            title = title_el.get_text(strip=True) if title_el else None
+            if not title or len(title) < 4:
+                continue
+
+            date_el = card.select_one("time, [class*='date'], [class*='when'], abbr[title]")
+            date_str = (date_el.get("datetime") or date_el.get("title") or
+                        date_el.get_text(strip=True)) if date_el else None
+
+            desc_el = card.select_one("p, .description, .entry-content p")
+            desc = desc_el.get_text(" ", strip=True)[:500] if desc_el else None
+
+            link_el = card.select_one("a[href]")
+            link = link_el.get("href", BASE) if link_el else BASE
+            if link and not link.startswith("http"):
+                link = BASE + link
+
+            ev = normalize({
+                "name": title, "startDate": date_str, "description": desc,
+                "location": {"name": "Chattanooga Renaissance Faire"},
+            }, SOURCE, link)
+            if ev:
+                events.append(ev)
+
+        if events:
+            break  # Found events, no need to try more pages
+
+    log.info(f"  [{SOURCE}] done — {len(events)} events")
+    return events
+
+
 # ── Orchestrator ──────────────────────────────────────────────────────────────
 SOURCES = [
     scrape_visit_chattanooga,
@@ -619,6 +691,7 @@ SOURCES = [
     scrape_nooga_nightlife,
     scrape_chatt_zoo,
     scrape_tn_aquarium,
+    scrape_chatt_ren_faire,
     scrape_eventbrite,
 ]
 

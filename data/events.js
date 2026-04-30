@@ -1,84 +1,6 @@
 window.CHATTANOOGA_EVENTS = {
-  "last_updated": "2026-04-27T09:02:00.696464+00:00",
+  "last_updated": "2026-04-30T23:12:23.068300+00:00",
   "events": [
-    {
-<<<<<<< HEAD
-      "id": "98f2a3ecfc84",
-      "title": "Spring 2026 Campfire Concert Series - Randy Steele and High Cold Wind",
-      "start": "2026-04-25T18:30:00-04:00",
-      "end": "2026-04-25T22:00:00-04:00",
-      "description": "Join us for a campfire concert listening to Randy Steele and High Cold Wind under the stars!",
-      "url": "https://www.eventbrite.com/e/spring-2026-campfire-concert-series-randy-steele-and-high-cold-wind-tickets-1984906123648",
-      "venue": "Reflection Riding Arboretum & Nature Center",
-      "category": "Music",
-      "source": "eventbrite.com"
-    },
-    {
-      "id": "e123942c20e8",
-      "title": "Muevete, Mami FEID theme walk",
-      "start": "2026-04-26T09:00:00-04:00",
-      "end": "2026-04-26T10:00:00-04:00",
-      "description": "Hot girls walk… but make it FEID green!",
-      "url": "https://www.eventbrite.com/e/muevete-mami-feid-theme-walk-tickets-1987201654643",
-      "venue": "Coolidge Park",
-      "category": "Family",
-      "source": "eventbrite.com"
-    },
-    {
-      "id": "07ca4299848f",
-      "title": "Plants + Pinot @ Unknown Caller",
-      "start": "2026-04-26T18:00:00-04:00",
-      "end": "2026-04-26T21:00:00-04:00",
-      "description": "Get ready to test your plant knowledge and win a plant from Verre Noir!",
-      "url": "https://www.eventbrite.com/e/plants-pinot-unknown-caller-tickets-1985919645118",
-      "venue": "Unknown Caller",
-      "category": "Food",
-      "source": "eventbrite.com"
-    },
-    {
-      "id": "820ee654bf19",
-      "title": "8 at the Gate Comedy Showcase",
-      "start": "2026-04-26T20:00:00-04:00",
-      "end": "2026-04-26T21:30:00-04:00",
-      "description": "Get ready to laugh out loud at the 8 at the Gate Comedy Showcase—eight comics, one epic night of fun!",
-      "url": "https://www.eventbrite.com/e/8-at-the-gate-comedy-showcase-tickets-1987742992800",
-      "venue": "Gate 11 Distillery",
-      "category": "Arts",
-      "source": "eventbrite.com"
-    },
-    {
-      "id": "d586b409926a",
-      "title": "Chatt Cup 2026",
-      "start": "2026-04-27T18:00:00-04:00",
-      "end": "2026-04-27T21:30:00-04:00",
-      "description": "Chattanooga’s top bartenders compete live on stage! YOU watch the builds, taste the drinks, and help decide the winner!!!",
-      "url": "https://www.eventbrite.com/e/chatt-cup-2026-tickets-1978838987681",
-      "venue": "Fifty Fifty Wine and Martini Bar",
-      "category": "Music",
-      "source": "eventbrite.com"
-    },
-    {
-      "id": "ae91b3a8a15a",
-      "title": "An Evening with Lena Dunham",
-      "start": "2026-04-27T19:00:00-04:00",
-      "end": null,
-      "description": "Preorder FAMESICK by Lena Dunham and join us for a one-of-a-kind virtual event celebrating its publication!",
-      "url": "https://www.eventbrite.com/e/an-evening-with-lena-dunham-tickets-1983550556109",
-      "venue": null,
-      "category": "Other",
-      "source": "eventbrite.com"
-    },
-    {
-      "id": "b8ab94b20c1f",
-      "title": "WES PARKER",
-      "start": "2026-04-28T20:00:00-04:00",
-      "end": "2026-04-28T23:00:00-04:00",
-      "description": "STREAM EGGSHELLZ AND GO GET YOUR TICKET",
-      "url": "https://www.eventbrite.com/e/wes-parker-tickets-1982323363543",
-      "venue": "Cherry Street Tavern",
-      "category": "Music",
-      "source": "eventbrite.com"
-    },
     {
       "id": "2d1d92805fb8",
       "title": "Logan Pilcher / Jaron Utt / Daniel Nelson - Live at YRR!",
@@ -88,6 +10,28 @@ window.CHATTANOOGA_EVENTS = {
       "url": "https://www.eventbrite.com/e/logan-pilcher-jaron-utt-daniel-nelson-live-at-yrr-tickets-1985200772952",
       "venue": "Yellow Racket Records",
       "category": "Music",
+      "source": "eventbrite.com"
+    },
+    {
+      "id": "299436a9d8ac",
+      "title": "Grant Writing for Beginners",
+      "start": "2026-05-02T10:00:00-04:00",
+      "end": "2026-05-02T11:30:00-04:00",
+      "description": "Have a great idea but not sure how to fund it?",
+      "url": "https://www.eventbrite.com/e/grant-writing-for-beginners-tickets-1986948832445",
+      "venue": "The Chattery",
+      "category": "Other",
+      "source": "eventbrite.com"
+    },
+    {
+      "id": "6c6afbfe4c55",
+      "title": "Dillard's (Children's Dept) Chattanooga, TN hosting Silhouettes by Edward",
+      "start": "2026-05-02T13:00:00-04:00",
+      "end": "2026-05-02T16:00:00-04:00",
+      "description": "Former top-selling artist with Walt Disney World, Edward Casey, will be creating hand cut classic silhouettes $45. SIGN UP NOW!",
+      "url": "https://www.eventbrite.com/e/dillards-childrens-dept-chattanooga-tn-hosting-silhouettes-by-edward-tickets-1982833234581",
+      "venue": "Dillard's",
+      "category": "Family",
       "source": "eventbrite.com"
     },
     {
@@ -113,36 +57,25 @@ window.CHATTANOOGA_EVENTS = {
       "source": "eventbrite.com"
     },
     {
-      "id": "6925da106be8",
-      "title": "Virtual Event: Nalini Singh, Archangel's Eternity",
-      "start": "2026-05-04T19:30:00-04:00",
-      "end": null,
-      "description": "East City Bookshop welcomes back Nalini Singh to discuss her latest romance, Archangel's Eternity.",
-      "url": "https://www.eventbrite.com/e/virtual-event-nalini-singh-archangels-eternity-tickets-1982804120500",
-      "venue": null,
-      "category": "Other",
+      "id": "6a3ffa4d1795",
+      "title": "Sounding Chattanooga: The Mid‑South Symphonic Band Family Concert",
+      "start": "2026-05-03T15:00:00-04:00",
+      "end": "2026-05-03T16:00:00-04:00",
+      "description": "Join the Mid-South Symphonic Band at the Volkswagen Conference Center for a fun family concert packed with music everyone will love!",
+      "url": "https://www.eventbrite.com/e/sounding-chattanooga-the-midsouth-symphonic-band-family-concert-tickets-1983643983553",
+      "venue": "Volkswagen Chattanooga, Volkswagen Drive, Chattanooga, TN, USA",
+      "category": "Music",
       "source": "eventbrite.com"
     },
     {
-      "id": "423fb1d837bd",
-      "title": "Milwaukee Career Fair",
-      "start": "2026-05-06T09:30:00-05:00",
-      "end": "2026-05-06T12:30:00-05:00",
-      "description": "Meet live with Milwaukee Employers",
-      "url": "https://www.eventbrite.com/e/milwaukee-career-fair-tickets-1115017309789",
+      "id": "31b5b879b1e2",
+      "title": "Newark Career Fair",
+      "start": "2026-05-04T09:30:00-04:00",
+      "end": "2026-05-04T12:30:00-04:00",
+      "description": "Meet live with hiring employers",
+      "url": "https://www.eventbrite.com/e/newark-career-fair-tickets-1438447568399",
       "venue": null,
       "category": "Family",
-      "source": "eventbrite.com"
-    },
-    {
-      "id": "de3e8a51fdea",
-      "title": "DAYDREAMIN' AT IRIS ROOFTOP BRUNCH",
-      "start": "2026-05-09T11:00:00-04:00",
-      "end": "2026-05-09T15:00:00-04:00",
-      "description": "READY FOR UNFORGETTABLE EXPERIENCES? YOUR FAVORITE EVENT IS BACK!",
-      "url": "https://www.eventbrite.com/e/daydreamin-at-iris-rooftop-brunch-tickets-1987611943829",
-      "venue": "The Waymark Chattanooga, Tapestry Collection by Hilton",
-      "category": "Food",
       "source": "eventbrite.com"
     },
     {
@@ -150,7 +83,7 @@ window.CHATTANOOGA_EVENTS = {
       "title": "Mother's Day Portraits & Petals",
       "start": "2026-05-09T13:00:00-04:00",
       "end": "2026-05-09T17:00:00-04:00",
-      "description": "Mother’s Day at Fawn: Family portraits, bouquet bar, charm bracelets, keepsake crafts, drinks + treats.",
+      "description": "Mother’s Day at Fawn: Family portraits, bouquet bar, charm bracelets, keepsake crafts, drinks + treats. Only $50 per Adult - Kids Free!",
       "url": "https://www.eventbrite.com/e/mothers-day-portraits-petals-tickets-1988180512433",
       "venue": "1817 Broad St",
       "category": "Sports",
@@ -176,6 +109,39 @@ window.CHATTANOOGA_EVENTS = {
       "url": "https://www.eventbrite.com/e/cuatro-cinco-live-at-wanderlinger-tickets-1986360192808",
       "venue": "55 Station St",
       "category": "Music",
+      "source": "eventbrite.com"
+    },
+    {
+      "id": "afeeae5c7ddb",
+      "title": "DAMAG3, Amber Ryann, Connor Cristi",
+      "start": "2026-05-09T20:00:00-04:00",
+      "end": null,
+      "description": "DAMAG3, Amber Ryann, Connor Cristi 5/9",
+      "url": "https://www.eventbrite.com/e/damag3-amber-ryann-connor-cristi-tickets-1985643275489",
+      "venue": "Cherry Street Tavern",
+      "category": "Music",
+      "source": "eventbrite.com"
+    },
+    {
+      "id": "76b90498a77d",
+      "title": "The Black Creek Mixer",
+      "start": "2026-05-12T17:30:00-04:00",
+      "end": "2026-05-12T20:00:00-04:00",
+      "description": "Network with top professionals while enjoying the scenic views of the Black Creek Club. Build connections in a beautiful, relaxed setting.",
+      "url": "https://www.eventbrite.com/e/the-black-creek-mixer-tickets-1986930122483",
+      "venue": "Black Creek Club",
+      "category": "Music",
+      "source": "eventbrite.com"
+    },
+    {
+      "id": "c8c6687ea767",
+      "title": "May Luncheon: Unlocking Chattanooga’s New Down Payment Assistance Program",
+      "start": "2026-05-13T11:00:00-04:00",
+      "end": "2026-05-13T13:00:00-04:00",
+      "description": "Women's Council of Realtors luncheon May 13: Learn Chattanooga’s revamped down payment assistance program with speaker Jacki Madding.",
+      "url": "https://www.eventbrite.com/e/may-luncheon-unlocking-chattanoogas-new-down-payment-assistance-program-tickets-1987159076290",
+      "venue": "The Walden Club",
+      "category": "Food",
       "source": "eventbrite.com"
     },
     {
@@ -210,183 +176,6 @@ window.CHATTANOOGA_EVENTS = {
       "venue": null,
       "category": "Other",
       "source": "eventbrite.com"
-    },
-=======
-      "id": "rfn-2026-05-23",
-      "title": "Purple Madness: A Tribute to Prince",
-      "start": "2026-05-23T18:00:00-04:00",
-      "end": "2026-05-23T22:00:00-04:00",
-      "description": "Riverfront Nights free outdoor concert series. Opener: Le Gato. Riverfront Pkwy closed between Chestnut St and Power Alley on event nights.",
-      "url": "https://www.riverfrontnights.com",
-      "venue": "Ross's Landing, Downtown Chattanooga",
-      "category": "Music",
-      "source": "manual"
-    },
-    {
-      "id": "rfn-2026-05-30",
-      "title": "Broken Hearts: A Tribute to Tom Petty and the Heartbreakers",
-      "start": "2026-05-30T18:00:00-04:00",
-      "end": "2026-05-30T22:00:00-04:00",
-      "description": "Riverfront Nights free outdoor concert series. Opener: Chelsea Drugstore. Riverfront Pkwy closed between Chestnut St and Power Alley on event nights.",
-      "url": "https://www.riverfrontnights.com",
-      "venue": "Ross's Landing, Downtown Chattanooga",
-      "category": "Music",
-      "source": "manual"
-    },
-    {
-      "id": "rfn-2026-06-06",
-      "title": "Rock the 90's: The Official 90's Rock Tribute",
-      "start": "2026-06-06T18:00:00-04:00",
-      "end": "2026-06-06T22:00:00-04:00",
-      "description": "Riverfront Nights free outdoor concert series. Opener: Cara Madaris Band. Riverfront Pkwy closed between Chestnut St and Power Alley on event nights.",
-      "url": "https://www.riverfrontnights.com",
-      "venue": "Ross's Landing, Downtown Chattanooga",
-      "category": "Music",
-      "source": "manual"
-    },
-    {
-      "id": "rfn-2026-06-13",
-      "title": "Greggie and the Jets: A Tribute to Elton John",
-      "start": "2026-06-13T18:00:00-04:00",
-      "end": "2026-06-13T22:00:00-04:00",
-      "description": "Riverfront Nights free outdoor concert series. Opener: Drew Sterchi and the Blues Tribe. Riverfront Pkwy closed between Chestnut St and Power Alley on event nights.",
-      "url": "https://www.riverfrontnights.com",
-      "venue": "Ross's Landing, Downtown Chattanooga",
-      "category": "Music",
-      "source": "manual"
-    },
-    {
-      "id": "rfn-2026-06-20",
-      "title": "The Monsters of Yacht",
-      "start": "2026-06-20T18:00:00-04:00",
-      "end": "2026-06-20T22:00:00-04:00",
-      "description": "Riverfront Nights free outdoor concert series. Opener: Chattanooga Horn Authority. Riverfront Pkwy closed between Chestnut St and Power Alley on event nights.",
-      "url": "https://www.riverfrontnights.com",
-      "venue": "Ross's Landing, Downtown Chattanooga",
-      "category": "Music",
-      "source": "manual"
-    },
-    {
-      "id": "rfn-2026-06-27",
-      "title": "Jump: America's Van Halen Experience",
-      "start": "2026-06-27T18:00:00-04:00",
-      "end": "2026-06-27T22:00:00-04:00",
-      "description": "Riverfront Nights free outdoor concert series. Opener: Sloppy Street Tacos. Riverfront Pkwy closed between Chestnut St and Power Alley on event nights.",
-      "url": "https://www.riverfrontnights.com",
-      "venue": "Ross's Landing, Downtown Chattanooga",
-      "category": "Music",
-      "source": "manual"
-    },
-    {
-      "id": "rfn-2026-07-04",
-      "title": "Johnny Folsom 4: A Johnny Cash Tribute",
-      "start": "2026-07-04T18:00:00-04:00",
-      "end": "2026-07-04T22:00:00-04:00",
-      "description": "Riverfront Nights free outdoor concert series. Opener: Courtney Cowart and Bad Matador. Riverfront Pkwy closed between Chestnut St and Power Alley on event nights.",
-      "url": "https://www.riverfrontnights.com",
-      "venue": "Ross's Landing, Downtown Chattanooga",
-      "category": "Music",
-      "source": "manual"
-    },
-    {
-      "id": "rfn-2026-07-11",
-      "title": "Boys in the Band: The Alabama Tribute",
-      "start": "2026-07-11T18:00:00-04:00",
-      "end": "2026-07-11T22:00:00-04:00",
-      "description": "Riverfront Nights free outdoor concert series. Opener: Bella and the Boys Band. Riverfront Pkwy closed between Chestnut St and Power Alley on event nights.",
-      "url": "https://www.riverfrontnights.com",
-      "venue": "Ross's Landing, Downtown Chattanooga",
-      "category": "Music",
-      "source": "manual"
-    },
-    {
-      "id": "rfn-2026-07-18",
-      "title": "Back to Mac: A Tribute to Fleetwood Mac",
-      "start": "2026-07-18T18:00:00-04:00",
-      "end": "2026-07-18T22:00:00-04:00",
-      "description": "Riverfront Nights free outdoor concert series. Opener: Rick Rushing and the Blues Strangers. Riverfront Pkwy closed between Chestnut St and Power Alley on event nights.",
-      "url": "https://www.riverfrontnights.com",
-      "venue": "Ross's Landing, Downtown Chattanooga",
-      "category": "Music",
-      "source": "manual"
-    },
-    {
-      "id": "rfn-2026-07-25",
-      "title": "Slippery When Wet: The Ultimate Bon Jovi Tribute",
-      "start": "2026-07-25T18:00:00-04:00",
-      "end": "2026-07-25T22:00:00-04:00",
-      "description": "Riverfront Nights free outdoor concert series. Opener: Dock Party. Riverfront Pkwy closed between Chestnut St and Power Alley on event nights.",
-      "url": "https://www.riverfrontnights.com",
-      "venue": "Ross's Landing, Downtown Chattanooga",
-      "category": "Music",
-      "source": "manual"
-    },
-    {
-      "id": "rfn-2026-08-01",
-      "title": "Kings of Queen: The Nation's Top Queen Tribute",
-      "start": "2026-08-01T18:00:00-04:00",
-      "end": "2026-08-01T22:00:00-04:00",
-      "description": "Riverfront Nights free outdoor concert series. Opener: Lovelace. Riverfront Pkwy closed between Chestnut St and Power Alley on event nights.",
-      "url": "https://www.riverfrontnights.com",
-      "venue": "Ross's Landing, Downtown Chattanooga",
-      "category": "Music",
-      "source": "manual"
-    },
-    {
-      "id": "rfn-2026-08-08",
-      "title": "Skynfolks: A Tribute to Lynyrd Skynyrd",
-      "start": "2026-08-08T18:00:00-04:00",
-      "end": "2026-08-08T22:00:00-04:00",
-      "description": "Riverfront Nights free outdoor concert series. Opener: Bettin' on the Mule. Riverfront Pkwy closed between Chestnut St and Power Alley on event nights.",
-      "url": "https://www.riverfrontnights.com",
-      "venue": "Ross's Landing, Downtown Chattanooga",
-      "category": "Music",
-      "source": "manual"
-    },
-    {
-      "id": "rfn-2026-08-15",
-      "title": "River Games Chattanooga",
-      "start": "2026-08-15T18:00:00-04:00",
-      "end": "2026-08-15T22:00:00-04:00",
-      "description": "Riverfront Nights special event at Ross's Landing. Riverfront Pkwy closed between Chestnut St and Power Alley on event nights.",
-      "url": "https://www.riverfrontnights.com",
-      "venue": "Ross's Landing, Downtown Chattanooga",
-      "category": "Other",
-      "source": "manual"
-    },
-    {
-      "id": "rfn-2026-08-22",
-      "title": "Tennessee's Dead",
-      "start": "2026-08-22T18:00:00-04:00",
-      "end": "2026-08-22T22:00:00-04:00",
-      "description": "Riverfront Nights free outdoor concert series. Opener: Trade Secrets. Riverfront Pkwy closed between Chestnut St and Power Alley on event nights.",
-      "url": "https://www.riverfrontnights.com",
-      "venue": "Ross's Landing, Downtown Chattanooga",
-      "category": "Music",
-      "source": "manual"
-    },
-    {
-      "id": "rfn-2026-08-29",
-      "title": "Departure: The Journey Tribute Band",
-      "start": "2026-08-29T18:00:00-04:00",
-      "end": "2026-08-29T22:00:00-04:00",
-      "description": "Riverfront Nights free outdoor concert series. Opener: Hot Fuss: A Killers Tribute. Riverfront Pkwy closed between Chestnut St and Power Alley on event nights.",
-      "url": "https://www.riverfrontnights.com",
-      "venue": "Ross's Landing, Downtown Chattanooga",
-      "category": "Music",
-      "source": "manual"
-    },
-    {
-      "id": "rfn-2026-09-05",
-      "title": "Let's Groove Tonight: Earth, Wind & Fire Tribute",
-      "start": "2026-09-05T18:00:00-04:00",
-      "end": "2026-09-05T22:00:00-04:00",
-      "description": "Riverfront Nights free outdoor concert series. Opener: Kool and the Gang Tribute. Riverfront Pkwy closed between Chestnut St and Power Alley on event nights.",
-      "url": "https://www.riverfrontnights.com",
-      "venue": "Ross's Landing, Downtown Chattanooga",
-      "category": "Music",
-      "source": "manual"
     }
->>>>>>> db51a5c721fd3d73e1fd57ac850fbf85bc6d2013
   ]
 };
