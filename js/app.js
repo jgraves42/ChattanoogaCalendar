@@ -215,10 +215,14 @@
   });
 
   // ── Load data ────────────────────────────────────────────────────────────────
-  const data = window.CHATTANOOGA_EVENTS;
+  const data      = window.CHATTANOOGA_EVENTS;
+  const permanent = window.CHATTANOOGA_PERMANENT_EVENTS || [];
 
   if (data) {
-    allEvents = Array.isArray(data.events) ? data.events : (Array.isArray(data) ? data : []);
+    const scraped = Array.isArray(data.events) ? data.events : (Array.isArray(data) ? data : []);
+    // Merge permanent (never overwritten) + scraped, dedup by id
+    const seenIds = new Set(permanent.map(e => e.id));
+    allEvents = [...permanent, ...scraped.filter(e => !seenIds.has(e.id))];
 
     const statusEl = document.getElementById('last-updated');
     let statusText = `${allEvents.length} event${allEvents.length !== 1 ? 's' : ''}`;

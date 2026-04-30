@@ -454,12 +454,171 @@ def scrape_eventbrite():
     return events
 
 
+def scrape_chatt_zoo():
+    """
+    Scrapes special events from chattzoo.org — skips daily schedule items
+    (feeding times, keeper talks, etc.) which repeat every day.
+    Tries JSON-LD first, then falls back to The Events Calendar plugin HTML
+    (common WordPress events plugin used by many attraction sites).
+    """
+    SOURCE = "chattzoo.org"
+    BASE   = "https://www.chattzoo.org"
+    events = []
+
+    # Keywords that indicate a repeating daily schedule item, not a special event
+    DAILY_SKIP = {
+        "feeding", "keeper talk", "keeper chat", "daily", "every day",
+        "animal encounter", "behind the scenes tour", "scheduled",
+        "am feeding", "pm feeding", "morning feeding", "afternoon feeding",
+    }
+
+    def is_daily_schedule(title, desc=""):
+        text = (title + " " + (desc or "")).lower()
+        return any(k in text for k in DAILY_SKIP)
+
+    for page in range(1, 4):
+        url = f"{BASE}/events/" if page == 1 else f"{BASE}/events/page/{page}/"
+        log.info(f"  [{SOURCE}] page {page}...")
+        r = fetch(url)
+        if not r:
+            break
+
+        # Try JSON-LD first
+        for item in jsonld(url, html=r.text):
+            if item.get("@type") in ("Event", "SocialEvent", "FoodEvent"):
+                title = str(item.get("name") or "").strip()
+                if not title or is_daily_schedule(title, item.get("description", "")):
+                    continue
+                ev = normalize(item, SOURCE)
+                if ev:
+                    events.append(ev)
+
+        # HTML fallback — The Events Calendar plugin structure
+        s = BeautifulSoup(r.text, "lxml")
+        cards = (s.select(".tribe-events-calendar article") or
+                 s.select(".tribe-event") or
+                 s.select(".tribe-events-list .tribe-events-event-meta") or
+                 s.select("article.type-tribe_events") or
+                 s.select(".event-item"))
+
+        for card in cards:
+            title_el = card.select_one(
+                ".tribe-event-url, .tribe-events-list-event-title a, "
+                "h2 a, h3 a, .entry-title a, [class*='event-title'] a"
+            )
+            title = title_el.get_text(strip=True) if title_el else None
+            if not title or is_daily_schedule(title):
+                continue
+
+            date_el = card.select_one(
+                ".tribe-events-start-datetime, time, "
+                "[class*='event-date'], [class*='start-date']"
+            )
+            date_str = (date_el.get("datetime") or date_el.get_text(strip=True)) if date_el else None
+
+            desc_el = card.select_one(".tribe-events-list-event-description p, p, .entry-summary")
+            desc = desc_el.get_text(" ", strip=True)[:500] if desc_el else None
+
+            link = title_el.get("href", BASE) if title_el else BASE
+            if link and not link.startswith("http"):
+                link = BASE + link
+
+            ev = normalize({
+                "name": title, "startDate": date_str, "description": desc,
+                "location": {"name": "Chattanooga Zoo"},
+            }, SOURCE, link)
+            if ev:
+                events.append(ev)
+
+        if not cards and not any(item.get("@type") in ("Event",) for item in jsonld(url, html=r.text)):
+            break
+
+    log.info(f"  [{SOURCE}] done — {len(events)} events")
+    return events
+
+
+def scrape_tn_aquarium():
+    """
+    Scrapes events from tnaqua.org/calendar/ — likely The Events Calendar
+    WordPress plugin. Tries JSON-LD first, then plugin HTML structure.
+    """
+    SOURCE = "tnaqua.org"
+    BASE   = "https://tnaqua.org"
+    events = []
+
+    for page in range(1, 4):
+        url = f"{BASE}/calendar/" if page == 1 else f"{BASE}/calendar/page/{page}/"
+        log.info(f"  [{SOURCE}] page {page}...")
+        r = fetch(url)
+        if not r:
+            break
+
+        # Try JSON-LD
+        found_jsonld = False
+        for item in jsonld(url, html=r.text):
+            if item.get("@type") in ("Event", "SocialEvent", "EducationEvent"):
+                ev = normalize(item, SOURCE)
+                if ev:
+                    events.append(ev)
+                    found_jsonld = True
+
+        # HTML fallback — The Events Calendar plugin
+        s = BeautifulSoup(r.text, "lxml")
+        cards = (s.select("article.type-tribe_events") or
+                 s.select(".tribe-event") or
+                 s.select(".tribe-events-list article") or
+                 s.select(".event-listing") or
+                 s.select("[class*='event-card']"))
+
+        for card in cards:
+            title_el = card.select_one(
+                ".tribe-events-list-event-title a, h2 a, h3 a, "
+                ".entry-title a, [class*='event-title'] a"
+            )
+            title = title_el.get_text(strip=True) if title_el else None
+            if not title:
+                continue
+
+            date_el = card.select_one(
+                ".tribe-events-start-datetime, .tribe-event-date-start, "
+                "time, [class*='event-date'], abbr[title]"
+            )
+            date_str = (date_el.get("datetime") or date_el.get("title") or
+                        date_el.get_text(strip=True)) if date_el else None
+
+            end_el = card.select_one(".tribe-events-end-datetime, .tribe-event-date-end")
+            end_str = (end_el.get("datetime") or end_el.get_text(strip=True)) if end_el else None
+
+            desc_el = card.select_one(".tribe-events-list-event-description p, p, .entry-summary")
+            desc = desc_el.get_text(" ", strip=True)[:500] if desc_el else None
+
+            link = title_el.get("href", BASE) if title_el else BASE
+            if link and not link.startswith("http"):
+                link = BASE + link
+
+            ev = normalize({
+                "name": title, "startDate": date_str, "endDate": end_str,
+                "description": desc,
+                "location": {"name": "Tennessee Aquarium"},
+            }, SOURCE, link)
+            if ev:
+                events.append(ev)
+
+        if not cards and not found_jsonld:
+            break
+
+    log.info(f"  [{SOURCE}] done — {len(events)} events")
+    return events
+
+
 # ── Orchestrator ──────────────────────────────────────────────────────────────
 SOURCES = [
     scrape_visit_chattanooga,
     scrape_chattanooga_pulse,
     scrape_nooga_today,
     scrape_nooga_nightlife,
+    scrape_chatt_zoo,
+    scrape_tn_aquarium,
     scrape_eventbrite,
 ]
 
