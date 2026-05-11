@@ -1,193 +1,6 @@
 window.CHATTANOOGA_EVENTS = {
-  "last_updated": "2026-05-04T09:02:33.255114+00:00",
+  "last_updated": "2026-05-11T09:24:36.375653+00:00",
   "events": [
-    {
-      "id": "6925da106be8",
-      "title": "Virtual Event: Nalini Singh, Archangel's Eternity",
-      "start": "2026-05-04T19:30:00-04:00",
-      "end": null,
-      "description": "East City Bookshop welcomes back Nalini Singh to discuss her latest romance, Archangel's Eternity.",
-      "url": "https://www.eventbrite.com/e/virtual-event-nalini-singh-archangels-eternity-tickets-1982804120500",
-      "venue": null,
-      "category": "Other",
-      "source": "eventbrite.com"
-    },
-    {
-      "id": "b3ee3495178a",
-      "title": "Premiere + Speaker: Wild Asia 3D (featuring BBC filmmaker Matthew Wright)",
-      "start": "2026-05-05T00:00:00",
-      "end": null,
-      "description": null,
-      "url": "https://tickets.tnaqua.org/events/019d8819-45e2-43c4-5341-60bd2665f901",
-      "venue": "Tennessee Aquarium",
-      "category": "Sports",
-      "source": "tnaqua.org"
-    },
-    {
-      "id": "25dd504234a2",
-      "title": "K-POP GOLDEN SHOW (Chattanooga TN)",
-      "start": "2026-05-08T16:30:00-04:00",
-      "end": "2026-05-08T20:30:00-04:00",
-      "description": "Get ready to dance and fan out at K-POP GOLDEN SHOW, the ultimate live party with your fave idols!",
-      "url": "https://www.eventbrite.com/e/k-pop-golden-show-chattanooga-tn-tickets-1988237657355",
-      "venue": "Chattanooga Convention Center",
-      "category": "Arts",
-      "source": "eventbrite.com"
-    },
-    {
-      "id": "0b18ce06033d",
-      "title": "May 8th | Chattanooga, TN | Skye Peterson \"Through Line\" Album Release Tour",
-      "start": "2026-05-08T19:00:00-04:00",
-      "end": "2026-05-08T21:00:00-04:00",
-      "description": "Skye Peterson with special guest Jolie Wing. Tickets: $20 advance, $25 door, $85 for families, $20 Pre-Show VIP Q&A Add-On",
-      "url": "https://www.eventbrite.com/e/may-8th-chattanooga-tn-skye-peterson-through-line-album-release-tour-tickets-1984391429183",
-      "venue": "Mission Chattanooga",
-      "category": "Music",
-      "source": "eventbrite.com"
-    },
-    {
-      "id": "7869d2f7798d",
-      "title": "All Under Heaven, Mult",
-      "start": "2026-05-08T21:00:00-04:00",
-      "end": null,
-      "description": "All Under Heaven, Mult 5/8",
-      "url": "https://www.eventbrite.com/e/all-under-heaven-mult-tickets-1987708140556",
-      "venue": "Cherry Street Tavern",
-      "category": "Music",
-      "source": "eventbrite.com"
-    },
-    {
-      "id": "8f603198c7c5",
-      "title": "Beginner Miniatures: A Little Pocket Library",
-      "start": "2026-05-09T10:00:00-04:00",
-      "end": "2026-05-09T12:00:00-04:00",
-      "description": "Get creative building tiny, charming miniatures that fit right in your pocket—perfect for beginners looking to start small and fun!",
-      "url": "https://www.eventbrite.com/e/beginner-miniatures-a-little-pocket-library-tickets-1987922773529",
-      "venue": "The Chattery",
-      "category": "Other",
-      "source": "eventbrite.com"
-    },
-    {
-      "id": "9bfb6b8d3b75",
-      "title": "Brunch & Blooms",
-      "start": "2026-05-09T11:00:00-04:00",
-      "end": "2026-05-09T13:00:00-04:00",
-      "description": "Gather with us for a joyful celebration of loved ones, native plants, and the beauty of the season.",
-      "url": "https://www.eventbrite.com/e/brunch-blooms-tickets-1983307547263",
-      "venue": "Reflection Riding Arboretum & Nature Center",
-      "category": "Food",
-      "source": "eventbrite.com"
-    },
-    {
-      "id": "e0bd368221ac",
-      "title": "Emirates Connect | B2B Networking | SMEs & Startups",
-      "start": "2026-05-09T18:00:00+04:00",
-      "end": "2026-05-09T19:00:00+04:00",
-      "description": "Connect. Collaborate. Grow. Dubai’s Weekly Meet-Up for SMEs & Startups.",
-      "url": "https://www.eventbrite.com/e/emirates-connect-b2b-networking-smes-startups-tickets-1980273655812",
-      "venue": null,
-      "category": "Other",
-      "source": "eventbrite.com"
-    },
-    {
-      "id": "2e88770dad32",
-      "title": "MLW: Major League Wrestling TV Taping fueled by Don Gato Tequila",
-      "start": "2026-05-09T19:00:00-04:00",
-      "end": "2026-05-09T22:30:00-04:00",
-      "description": "Rowdy, southern-fried wrestling goes worldwide live from Chattanooga.",
-      "url": "https://www.eventbrite.com/e/mlw-major-league-wrestling-tv-taping-fueled-by-don-gato-tequila-tickets-1983880733679",
-      "venue": "The Signal",
-      "category": "Other",
-      "source": "eventbrite.com"
-    },
-    {
-      "id": "5285d631b393",
-      "title": "Cuatro Cinco Live at WanderLinger!",
-      "start": "2026-05-09T20:00:00-04:00",
-      "end": null,
-      "description": "WanderLinger and Gloss Family Entertainment present Cuatro Cinco Live celebrating Chef Carolyn's birthday!",
-      "url": "https://www.eventbrite.com/e/cuatro-cinco-live-at-wanderlinger-tickets-1986360192808",
-      "venue": "55 Station St",
-      "category": "Music",
-      "source": "eventbrite.com"
-    },
-    {
-      "id": "afeeae5c7ddb",
-      "title": "DAMAG3, Amber Ryann, Connor Cristi",
-      "start": "2026-05-09T20:00:00-04:00",
-      "end": null,
-      "description": "DAMAG3, Amber Ryann, Connor Cristi 5/9",
-      "url": "https://www.eventbrite.com/e/damag3-amber-ryann-connor-cristi-tickets-1985643275489",
-      "venue": "Cherry Street Tavern",
-      "category": "Music",
-      "source": "eventbrite.com"
-    },
-    {
-      "id": "e5b45f6e15a4",
-      "title": "Moms First Self Love Candle Experience",
-      "start": "2026-05-10T18:00:00-04:00",
-      "end": "2026-05-10T20:00:00-04:00",
-      "description": "Mother’s Day self-love candle experience. Reflect, create, and unwind while making your own custom candle in a warm, welcoming space.",
-      "url": "https://www.eventbrite.com/e/moms-first-self-love-candle-experience-tickets-1988216407797",
-      "venue": "Plant Bar",
-      "category": "Music",
-      "source": "eventbrite.com"
-    },
-    {
-      "id": "b371d11b696b",
-      "title": "2nd Annual Period Party Comedy Fundraiser at Broads Lounge",
-      "start": "2026-05-10T19:00:00-04:00",
-      "end": "2026-05-10T20:30:00-04:00",
-      "description": "Come out to Broads Lounge for a hilarious night of comedy that benefits great cause!",
-      "url": "https://www.eventbrite.com/e/2nd-annual-period-party-comedy-fundraiser-at-broads-lounge-registration-1984235186858",
-      "venue": "Broads",
-      "category": "Other",
-      "source": "eventbrite.com"
-    },
-    {
-      "id": "76b90498a77d",
-      "title": "The Black Creek Mixer",
-      "start": "2026-05-12T17:30:00-04:00",
-      "end": "2026-05-12T20:00:00-04:00",
-      "description": "Network with top professionals while enjoying the scenic views of the Black Creek Club. Build connections in a beautiful, relaxed setting.",
-      "url": "https://www.eventbrite.com/e/the-black-creek-mixer-tickets-1986930122483",
-      "venue": "Black Creek Club",
-      "category": "Music",
-      "source": "eventbrite.com"
-    },
-    {
-      "id": "f024fe9e927c",
-      "title": "The Undiscovered Class — Film Premiere",
-      "start": "2026-05-12T18:00:00-04:00",
-      "end": "2026-05-12T19:00:00-04:00",
-      "description": "Get ready to dive into a fresh story with The Undiscovered Class premiere—it's gonna be a night to remember!",
-      "url": "https://www.eventbrite.com/e/the-undiscovered-class-film-premiere-tickets-1987915051432",
-      "venue": "1906 Union Ave",
-      "category": "Other",
-      "source": "eventbrite.com"
-    },
-    {
-      "id": "7cd77e15a9c9",
-      "title": "The economic impact of historic preservation",
-      "start": "2026-05-13T11:30:00-04:00",
-      "end": "2026-05-13T13:00:00-04:00",
-      "description": "Todd Morgan of Preserve Chattanooga will present",
-      "url": "https://www.eventbrite.com/e/the-economic-impact-of-historic-preservation-tickets-1987322563284",
-      "venue": "Construction Career Center",
-      "category": "Other",
-      "source": "eventbrite.com"
-    },
-    {
-      "id": "71c496a11e4c",
-      "title": "Will Reagan + Young Oceans + Ivan Theva",
-      "start": "2026-05-15T20:00:00-04:00",
-      "end": "2026-05-15T22:30:00-04:00",
-      "description": "Join us at Yellow Racket Records (Chattanooga) for an intimate evening of songs with Will Reagan and Young Oceans",
-      "url": "https://www.eventbrite.com/e/will-reagan-young-oceans-ivan-theva-tickets-1985221002459",
-      "venue": "Yellow Racket Records",
-      "category": "Music",
-      "source": "eventbrite.com"
-    },
     {
       "id": "8b8753fe88ae",
       "title": "Laurel Dace Day in Spring City, TN",
@@ -211,50 +24,6 @@ window.CHATTANOOGA_EVENTS = {
       "source": "chattzoo.org"
     },
     {
-      "id": "7cc0cd30e403",
-      "title": "Monday Night Social - Record Release Show at YRR!",
-      "start": "2026-05-16T20:00:00-04:00",
-      "end": "2026-05-16T22:30:00-04:00",
-      "description": "Join us for an evening of live music to celebrate the release of Monday Night Social's new album, Chasing Light!",
-      "url": "https://www.eventbrite.com/e/monday-night-social-record-release-show-at-yrr-tickets-1988259881829",
-      "venue": "Yellow Racket Records",
-      "category": "Music",
-      "source": "eventbrite.com"
-    },
-    {
-      "id": "b5e45142095b",
-      "title": "The AI Edge: Supercharge Your Startup Vision",
-      "start": "2026-05-18T16:00:00-07:00",
-      "end": "2026-05-18T18:00:00-07:00",
-      "description": "Get ready to level up your startup game with cutting-edge AI technology at The AI Edge event - it's time to supercharge your vision!",
-      "url": "https://www.eventbrite.com/e/the-ai-edge-supercharge-your-startup-vision-tickets-1425498467289",
-      "venue": null,
-      "category": "Sports",
-      "source": "eventbrite.com"
-    },
-    {
-      "id": "2a016ad3a64f",
-      "title": "Hamilton County State of the County",
-      "start": "2026-05-19T13:00:00-04:00",
-      "end": "2026-05-19T14:30:00-04:00",
-      "description": "Join Hamilton County Mayor Weston Wamp for his fourth State of the County address.",
-      "url": "https://www.eventbrite.com/e/hamilton-county-state-of-the-county-tickets-1988421788095",
-      "venue": "McKenzie Arena",
-      "category": "Music",
-      "source": "eventbrite.com"
-    },
-    {
-      "id": "29fcd3159c6c",
-      "title": "Westin White Party",
-      "start": "2026-05-21T17:00:00-04:00",
-      "end": "2026-05-21T22:00:00-04:00",
-      "description": "Thursdays are for the girls! Join us 5/21 for a 21+ women's-only pool deck white party. $25 entry includes a welcome cocktail & slippers.",
-      "url": "https://www.eventbrite.com/e/westin-white-party-tickets-1988022011352",
-      "venue": "Westin Pool Deck",
-      "category": "Food",
-      "source": "eventbrite.com"
-    },
-    {
       "id": "fa53151c7fb8",
       "title": "Nightlife: Thrills, Gills & Chills",
       "start": "2026-05-22T00:00:00",
@@ -266,17 +35,6 @@ window.CHATTANOOGA_EVENTS = {
       "source": "tnaqua.org"
     },
     {
-      "id": "85c50bcf833b",
-      "title": "Bakersfield Career Fair",
-      "start": "2026-05-27T09:30:00-07:00",
-      "end": "2026-05-27T12:30:00-07:00",
-      "description": "Connect with Bakersfield Employers",
-      "url": "https://www.eventbrite.com/e/bakersfield-career-fair-tickets-295406437607",
-      "venue": null,
-      "category": "Family",
-      "source": "eventbrite.com"
-    },
-    {
       "id": "0c9355ee51c3",
       "title": "Chattanooga Renaissance Faire",
       "start": "2026-05-30T10:00:00",
@@ -286,17 +44,6 @@ window.CHATTANOOGA_EVENTS = {
       "venue": "Coolidge Park, 150 River St, Chattanooga, TN",
       "category": "Family",
       "source": "chattrenfaire.com"
-    },
-    {
-      "id": "5d15f21a8787",
-      "title": "UX Design Hackathon with UX Woman",
-      "start": "2026-05-31T13:00:00-04:00",
-      "end": "2026-05-31T17:00:00-04:00",
-      "description": "Land $100K+ UX jobs, lead design strategy, and launch impactful startups, designing for your community & rethinking the status quo.",
-      "url": "https://www.eventbrite.com/e/ux-design-hackathon-with-ux-woman-tickets-1980891134708",
-      "venue": null,
-      "category": "Other",
-      "source": "eventbrite.com"
     },
     {
       "id": "c342b4f29f01",
@@ -330,17 +77,6 @@ window.CHATTANOOGA_EVENTS = {
       "venue": "Tennessee Aquarium",
       "category": "Family",
       "source": "tnaqua.org"
-    },
-    {
-      "id": "b3943286c3fb",
-      "title": "Marketing Breakthrough: 40X Your Holistic Business [$297 Value]",
-      "start": "2026-08-09T10:00:00-07:00",
-      "end": "2026-08-09T12:00:00-07:00",
-      "description": "Learn marketing secrets to explode your business. This event is a must for spiritual entrepreneurs such as healers, teachers, coaches, etc.",
-      "url": "https://www.eventbrite.com/e/marketing-breakthrough-40x-your-holistic-business-297-value-tickets-1222103026049",
-      "venue": null,
-      "category": "Food",
-      "source": "eventbrite.com"
     }
   ]
 };
