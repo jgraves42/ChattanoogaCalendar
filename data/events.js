@@ -1,17 +1,6 @@
 window.CHATTANOOGA_EVENTS = {
-  "last_updated": "2026-05-25T09:34:22.205912+00:00",
+  "last_updated": "2026-06-01T10:02:13.623586+00:00",
   "events": [
-    {
-      "id": "0c9355ee51c3",
-      "title": "Chattanooga Renaissance Faire",
-      "start": "2026-05-30T10:00:00",
-      "end": null,
-      "description": "Here ye, here ye!",
-      "url": "https://chattrenfaire.com/",
-      "venue": "Coolidge Park, 150 River St, Chattanooga, TN",
-      "category": "Family",
-      "source": "chattrenfaire.com"
-    },
     {
       "id": "c342b4f29f01",
       "title": "Chattanooga Lookouts Conservation Night",
@@ -22,28 +11,6 @@ window.CHATTANOOGA_EVENTS = {
       "venue": "Tennessee Aquarium",
       "category": "Family",
       "source": "tnaqua.org"
-    },
-    {
-      "id": "6d1b99a8a5a5",
-      "title": "Ice Cream Safari",
-      "start": "2026-06-13T16:00:00",
-      "end": null,
-      "description": "Visit your favorite animal friends while tasting sweet treats from Ben & Jerry's, Blue Bell, Mayfield, Dippin' Dots, The Ice Cream Show and more. You can also watch our animals join in on the fun with their own special frozen treats!",
-      "url": "https://www.chattzoo.org/events/ice-cream-safari",
-      "venue": "Chattanooga Zoo",
-      "category": "Food",
-      "source": "chattzoo.org"
-    },
-    {
-      "id": "5d19e2be3b51",
-      "title": "Q 'n Brew",
-      "start": "2026-07-11T18:00:00",
-      "end": null,
-      "description": "Enjoy barbeque and other summertime classics from great local restaurants at this family-friendly cookout. Refreshing beer and a fabulous bluegrass band will keep everyone rocking! Plus, enjoy up-close animal meet and greets, fun lawn games and thrilling tortoise races!",
-      "url": "https://www.chattzoo.org/events/q-n-brew",
-      "venue": "Chattanooga Zoo",
-      "category": "Music",
-      "source": "chattzoo.org"
     },
     {
       "id": "809556b65fda",
