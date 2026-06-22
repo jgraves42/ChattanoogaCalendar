@@ -1,6 +1,17 @@
 window.CHATTANOOGA_EVENTS = {
-  "last_updated": "2026-06-15T10:19:37.221133+00:00",
+  "last_updated": "2026-06-22T10:12:59.358246+00:00",
   "events": [
+    {
+      "id": "ad995ec803ab",
+      "title": "Lemur Baby Shower",
+      "start": "2026-07-09T00:00:00",
+      "end": null,
+      "description": null,
+      "url": "https://tnaqua.org/animals/baby-lemur/",
+      "venue": "Tennessee Aquarium",
+      "category": "Family",
+      "source": "tnaqua.org"
+    },
     {
       "id": "5d19e2be3b51",
       "title": "Q 'n Brew",
@@ -13,12 +24,34 @@ window.CHATTANOOGA_EVENTS = {
       "source": "chattzoo.org"
     },
     {
-      "id": "809556b65fda",
-      "title": "Fish & Sips",
+      "id": "0d47f230f945",
+      "title": "Fish & Sips (21+)",
       "start": "2026-07-18T00:00:00",
       "end": null,
       "description": null,
       "url": "https://tickets.tnaqua.org/events/019d918f-a2e8-b54a-3e43-4b313d873ae2",
+      "venue": "Tennessee Aquarium",
+      "category": "Family",
+      "source": "tnaqua.org"
+    },
+    {
+      "id": "ce57e0e5d06c",
+      "title": "Member Night: Ooey, Gooey Science!",
+      "start": "2026-07-31T00:00:00",
+      "end": null,
+      "description": null,
+      "url": "https://tickets.tnaqua.org/events/019e746e-b203-6800-e784-aa18959166e9?_gl=1%2a1k8di6m%2a_gcl_au%2aNTk3NTM0OTY5LjE3NzUxMzkxOTIuMTUwODk3MzA1NC4xNzgxNjM5MjcxLjE3ODE2MzkyODg.",
+      "venue": "Tennessee Aquarium",
+      "category": "Family",
+      "source": "tnaqua.org"
+    },
+    {
+      "id": "156c00865303",
+      "title": "Nightlife: Rivers & Realms (18+)",
+      "start": "2026-08-21T00:00:00",
+      "end": null,
+      "description": null,
+      "url": "https://tickets.tnaqua.org/events/019ecbf2-6d02-b7ec-0f94-0399cebe6abc",
       "venue": "Tennessee Aquarium",
       "category": "Family",
       "source": "tnaqua.org"
