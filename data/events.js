@@ -1,5 +1,5 @@
 window.CHATTANOOGA_EVENTS = {
-  "last_updated": "2026-06-22T10:12:59.358246+00:00",
+  "last_updated": "2026-06-29T09:47:25.512222+00:00",
   "events": [
     {
       "id": "ad995ec803ab",
