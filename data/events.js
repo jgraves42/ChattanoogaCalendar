@@ -1,5 +1,5 @@
 window.CHATTANOOGA_EVENTS = {
-  "last_updated": "2026-06-29T09:47:25.512222+00:00",
+  "last_updated": "2026-07-06T09:32:56.265752+00:00",
   "events": [
     {
       "id": "ad995ec803ab",
@@ -24,12 +24,12 @@ window.CHATTANOOGA_EVENTS = {
       "source": "chattzoo.org"
     },
     {
-      "id": "0d47f230f945",
+      "id": "0d2e1b6ea7c5",
       "title": "Fish & Sips (21+)",
       "start": "2026-07-18T00:00:00",
       "end": null,
       "description": null,
-      "url": "https://tickets.tnaqua.org/events/019d918f-a2e8-b54a-3e43-4b313d873ae2",
+      "url": "https://tnaqua.org/events-programs/fish-sips/",
       "venue": "Tennessee Aquarium",
       "category": "Family",
       "source": "tnaqua.org"
