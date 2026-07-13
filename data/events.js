@@ -1,28 +1,6 @@
 window.CHATTANOOGA_EVENTS = {
-  "last_updated": "2026-07-06T09:32:56.265752+00:00",
+  "last_updated": "2026-07-13T11:21:50.030007+00:00",
   "events": [
-    {
-      "id": "ad995ec803ab",
-      "title": "Lemur Baby Shower",
-      "start": "2026-07-09T00:00:00",
-      "end": null,
-      "description": null,
-      "url": "https://tnaqua.org/animals/baby-lemur/",
-      "venue": "Tennessee Aquarium",
-      "category": "Family",
-      "source": "tnaqua.org"
-    },
-    {
-      "id": "5d19e2be3b51",
-      "title": "Q 'n Brew",
-      "start": "2026-07-11T18:00:00",
-      "end": null,
-      "description": "Enjoy barbeque and other summertime classics from great local restaurants at this family-friendly cookout. Refreshing beer and a fabulous bluegrass band will keep everyone rocking! Plus, enjoy up-close animal meet and greets, fun lawn games and thrilling tortoise races!",
-      "url": "https://www.chattzoo.org/events/q-n-brew",
-      "venue": "Chattanooga Zoo",
-      "category": "Music",
-      "source": "chattzoo.org"
-    },
     {
       "id": "0d2e1b6ea7c5",
       "title": "Fish & Sips (21+)",
@@ -44,6 +22,17 @@ window.CHATTANOOGA_EVENTS = {
       "venue": "Tennessee Aquarium",
       "category": "Family",
       "source": "tnaqua.org"
+    },
+    {
+      "id": "bfa6cb4508ef",
+      "title": "Pirates, Parrots & Princesses",
+      "start": "2026-08-08T10:00:00",
+      "end": null,
+      "description": "Our friends at Magic Lamp Entertainment are bringing your favorite princesses and pirates — like Ariel, Cinderella, Moana, Captain Jack Sparrow and more (exact character roster TBA) — to the Zoo for photos and meet and greets. Plus, embark on a treasure hunt, visit spectacular behind-the-scenes Zoo animals, chat with our knowledgeable Zoo Keepers and watch our animals enjoy special themed enrichment activities. Let's have a day of fun and adventure!",
+      "url": "https://www.chattzoo.org/events/pirates-parrots-princesses",
+      "venue": "Chattanooga Zoo",
+      "category": "Family",
+      "source": "chattzoo.org"
     },
     {
       "id": "156c00865303",
