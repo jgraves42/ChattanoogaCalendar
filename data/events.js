@@ -1,17 +1,6 @@
 window.CHATTANOOGA_EVENTS = {
-  "last_updated": "2026-07-13T11:21:50.030007+00:00",
+  "last_updated": "2026-07-20T11:09:11.776151+00:00",
   "events": [
-    {
-      "id": "0d2e1b6ea7c5",
-      "title": "Fish & Sips (21+)",
-      "start": "2026-07-18T00:00:00",
-      "end": null,
-      "description": null,
-      "url": "https://tnaqua.org/events-programs/fish-sips/",
-      "venue": "Tennessee Aquarium",
-      "category": "Family",
-      "source": "tnaqua.org"
-    },
     {
       "id": "ce57e0e5d06c",
       "title": "Member Night: Ooey, Gooey Science!",
@@ -35,12 +24,12 @@ window.CHATTANOOGA_EVENTS = {
       "source": "chattzoo.org"
     },
     {
-      "id": "156c00865303",
+      "id": "3427bad7d9ac",
       "title": "Nightlife: Rivers & Realms (18+)",
       "start": "2026-08-21T00:00:00",
       "end": null,
       "description": null,
-      "url": "https://tickets.tnaqua.org/events/019ecbf2-6d02-b7ec-0f94-0399cebe6abc",
+      "url": "https://tnaqua.org/events-programs/nightlife-rivers-realms/",
       "venue": "Tennessee Aquarium",
       "category": "Family",
       "source": "tnaqua.org"
