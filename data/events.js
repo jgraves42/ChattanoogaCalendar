@@ -1,5 +1,5 @@
 window.CHATTANOOGA_EVENTS = {
-  "last_updated": "2026-07-20T11:09:11.776151+00:00",
+  "last_updated": "2026-07-27T11:33:39.419649+00:00",
   "events": [
     {
       "id": "ce57e0e5d06c",
@@ -13,11 +13,22 @@ window.CHATTANOOGA_EVENTS = {
       "source": "tnaqua.org"
     },
     {
+      "id": "26eeffef401f",
+      "title": "Teacher Appreciation Day",
+      "start": "2026-08-02T00:00:00",
+      "end": null,
+      "description": null,
+      "url": "https://form.jotform.com/tnaquaeducation2021/teacher-appreciation-2026-registrat",
+      "venue": "Tennessee Aquarium",
+      "category": "Family",
+      "source": "tnaqua.org"
+    },
+    {
       "id": "bfa6cb4508ef",
       "title": "Pirates, Parrots & Princesses",
       "start": "2026-08-08T10:00:00",
       "end": null,
-      "description": "Our friends at Magic Lamp Entertainment are bringing your favorite princesses and pirates — like Ariel, Cinderella, Moana, Captain Jack Sparrow and more (exact character roster TBA) — to the Zoo for photos and meet and greets. Plus, embark on a treasure hunt, visit spectacular behind-the-scenes Zoo animals, chat with our knowledgeable Zoo Keepers and watch our animals enjoy special themed enrichment activities. Let's have a day of fun and adventure!",
+      "description": "Our friends at Magic Lamp Entertainment are bringing your favorite princesses and pirates to the Zoo for photos and meet and greets.",
       "url": "https://www.chattzoo.org/events/pirates-parrots-princesses",
       "venue": "Chattanooga Zoo",
       "category": "Family",
