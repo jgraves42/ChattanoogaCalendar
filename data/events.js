@@ -1,17 +1,6 @@
 window.CHATTANOOGA_EVENTS = {
-  "last_updated": "2026-08-17T08:53:05.048855+00:00",
+  "last_updated": "2026-08-24T08:57:17.169046+00:00",
   "events": [
-    {
-      "id": "3427bad7d9ac",
-      "title": "Nightlife: Rivers & Realms (18+)",
-      "start": "2026-08-21T00:00:00",
-      "end": null,
-      "description": null,
-      "url": "https://tnaqua.org/events-programs/nightlife-rivers-realms/",
-      "venue": "Tennessee Aquarium",
-      "category": "Family",
-      "source": "tnaqua.org"
-    },
     {
       "id": "3bf7a883479a",
       "title": "Senior Day at the Zoo",
@@ -33,6 +22,17 @@ window.CHATTANOOGA_EVENTS = {
       "venue": "Chattanooga Zoo",
       "category": "Family",
       "source": "chattzoo.org"
+    },
+    {
+      "id": "9e4b335698ca",
+      "title": "Fall Camp: Fungi Friends",
+      "start": "2026-10-19T00:00:00",
+      "end": null,
+      "description": null,
+      "url": "https://tnaqua.org/events-programs/camps/#fall",
+      "venue": "Tennessee Aquarium",
+      "category": "Family",
+      "source": "tnaqua.org"
     }
   ]
 };
