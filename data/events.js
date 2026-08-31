@@ -1,6 +1,17 @@
 window.CHATTANOOGA_EVENTS = {
-  "last_updated": "2026-08-24T08:57:17.169046+00:00",
+  "last_updated": "2026-08-31T16:05:35.252144+00:00",
   "events": [
+    {
+      "id": "bf4e3aae5ec6",
+      "title": "Penguin Baby Shower 🐧🐧",
+      "start": "2026-09-13T00:00:00",
+      "end": null,
+      "description": null,
+      "url": "https://www.facebook.com/share/1GHC3TbAMF/",
+      "venue": "Tennessee Aquarium",
+      "category": "Family",
+      "source": "tnaqua.org"
+    },
     {
       "id": "3bf7a883479a",
       "title": "Senior Day at the Zoo",
@@ -13,6 +24,17 @@ window.CHATTANOOGA_EVENTS = {
       "source": "chattzoo.org"
     },
     {
+      "id": "8a3127a14a3e",
+      "title": "TN River Rescue Clean-Up",
+      "start": "2026-10-03T00:00:00",
+      "end": null,
+      "description": null,
+      "url": "https://www.facebook.com/share/1BkbniB7hU/",
+      "venue": "Tennessee Aquarium",
+      "category": "Family",
+      "source": "tnaqua.org"
+    },
+    {
       "id": "af270d404219",
       "title": "Boo in the Zoo",
       "start": "2026-10-09T16:00:00",
@@ -22,17 +44,6 @@ window.CHATTANOOGA_EVENTS = {
       "venue": "Chattanooga Zoo",
       "category": "Family",
       "source": "chattzoo.org"
-    },
-    {
-      "id": "9e4b335698ca",
-      "title": "Fall Camp: Fungi Friends",
-      "start": "2026-10-19T00:00:00",
-      "end": null,
-      "description": null,
-      "url": "https://tnaqua.org/events-programs/camps/#fall",
-      "venue": "Tennessee Aquarium",
-      "category": "Family",
-      "source": "tnaqua.org"
     }
   ]
 };
