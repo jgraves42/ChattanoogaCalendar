@@ -1,9 +1,20 @@
 window.CHATTANOOGA_EVENTS = {
-  "last_updated": "2026-10-19T15:29:23.491374+00:00",
+  "last_updated": "2026-10-26T15:05:12.698974+00:00",
   "events": [
     {
-      "id": "9d9d4a393411",
-      "title": "Aquascarium 2026 – General Admission registration is now open!",
+      "id": "c3edce59eb11",
+      "title": "World Lemur Day",
+      "start": "2026-10-30T00:00:00",
+      "end": null,
+      "description": null,
+      "url": "https://www.facebook.com/share/14qZRQR9aCm/",
+      "venue": "Tennessee Aquarium",
+      "category": "Family",
+      "source": "tnaqua.org"
+    },
+    {
+      "id": "425ada1ff081",
+      "title": "Aquascarium 2026",
       "start": "2026-10-30T00:00:00",
       "end": null,
       "description": null,
@@ -13,12 +24,12 @@ window.CHATTANOOGA_EVENTS = {
       "source": "tnaqua.org"
     },
     {
-      "id": "3dd4c14d0e17",
-      "title": "Fall Camp: Fungi Friends",
-      "start": "2027-10-19T00:00:00",
+      "id": "529ad984b9bc",
+      "title": "Speaker Event – America the Beautiful: Our Natural Wonders 3D",
+      "start": "2026-11-12T00:00:00",
       "end": null,
       "description": null,
-      "url": "https://tnaqua.org/events-programs/camps/#fall",
+      "url": "https://tickets.tnaqua.org/events/01a14b78-f760-101f-7464-ee388e485e4d",
       "venue": "Tennessee Aquarium",
       "category": "Family",
       "source": "tnaqua.org"
